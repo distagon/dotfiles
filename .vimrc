@@ -2,7 +2,7 @@ syntax on
 
 set guicursor=
 set relativenumber
-set nohlsearch
+set hlsearch
 set hidden
 set noerrorbells
 set tabstop=4 softtabstop=4
@@ -58,14 +58,19 @@ set background=dark
 let g:ctrlp_use_caching = 0
 
 " netrw file browser
-let g:netrw_banner = 1
+let g:netrw_hide = 1
 let g:netrw_liststyle = 3
+let g:netrw_banner = 0
 let g:netrw_browse_split = 4
+let g:netrw_winsize = 24
 let g:netrw_altv = 1
-let g:netrw_winsize = 25
+let g:netrw_chgwin = 2
+let g:netrw_list_hide = '.*\.swp$'
+let g:netrw_localrmdir = 'rm -rf'
 augroup ProjectDrawer
-  autocmd!
-  autocmd VimEnter * :Vexplore
+    autocmd!
+    autocmd VimEnter * :Vexplore
+    autocmd VimEnter * :wincmd p
 augroup END
 
 " Give more space for displaying messages.
@@ -79,7 +84,7 @@ set updatetime=50
 set shortmess+=c
 
 set colorcolumn=80
-highlight ColorColumn ctermbg=0 guibg=darkgrey
+highlight ColorColumn ctermbg=0 guibg=darkblue
 
 " shortcut key remap
 nnoremap <leader>h :wincmd h<CR>
